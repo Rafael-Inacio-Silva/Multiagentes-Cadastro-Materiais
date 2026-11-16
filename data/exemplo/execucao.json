@@ -1,0 +1,296 @@
+{
+ "gravado_em": "2026-11-16 11:17",
+ "modelo": "gpt-5.4-mini",
+ "desenho": "eixo-transmissao.png",
+ "eventos": [
+  {
+   "t_ms": 25,
+   "evento": {
+    "evento": "inicio",
+    "agentes": [
+     {
+      "id": "classificador",
+      "nome": "Classificador",
+      "papel": "É um desenho técnico?",
+      "ia": true
+     },
+     {
+      "id": "estrutura",
+      "nome": "Estrutura",
+      "papel": "Peça única ou conjunto",
+      "ia": true
+     },
+     {
+      "id": "numero",
+      "nome": "Nº do desenho",
+      "papel": "Código e revisão do carimbo",
+      "ia": true
+     },
+     {
+      "id": "nome",
+      "nome": "Denominação",
+      "papel": "Nome da peça no carimbo",
+      "ia": true
+     },
+     {
+      "id": "material",
+      "nome": "Material",
+      "papel": "Especificação e família",
+      "ia": true
+     },
+     {
+      "id": "tipo",
+      "nome": "Tipo de item",
+      "papel": "Processo de fabricação",
+      "ia": true
+     },
+     {
+      "id": "geometria",
+      "nome": "Geometria",
+      "papel": "Trechos e cotas para o peso",
+      "ia": true
+     },
+     {
+      "id": "cadastro",
+      "nome": "Cadastro",
+      "papel": "Peso, texto breve e pendências",
+      "ia": false
+     }
+    ],
+    "modelo": "gpt-5.4-mini"
+   }
+  },
+  {
+   "t_ms": 25,
+   "evento": {
+    "evento": "agente",
+    "id": "classificador",
+    "estado": "rodando"
+   }
+  },
+  {
+   "t_ms": 2962,
+   "evento": {
+    "evento": "agente",
+    "id": "classificador",
+    "estado": "ok",
+    "ms": 2937,
+    "resumo": "Desenho técnico",
+    "resultado": {
+     "tipo_documento": "desenho_tecnico",
+     "motivo": "Há vistas cotadas com corte A-A, símbolos Ø, tolerâncias e carimbo com denominação e número do desenho."
+    }
+   }
+  },
+  {
+   "t_ms": 2962,
+   "evento": {
+    "evento": "agente",
+    "id": "estrutura",
+    "estado": "rodando"
+   }
+  },
+  {
+   "t_ms": 4599,
+   "evento": {
+    "evento": "agente",
+    "id": "estrutura",
+    "estado": "ok",
+    "ms": 1637,
+    "resumo": "Peça única",
+    "resultado": {
+     "estrutura": "peca_unica",
+     "motivo": "Há apenas uma peça detalhada, com um único balão de posição (1) e sem lista de materiais com múltiplas linhas."
+    }
+   }
+  },
+  {
+   "t_ms": 4601,
+   "evento": {
+    "evento": "agente",
+    "id": "numero",
+    "estado": "rodando"
+   }
+  },
+  {
+   "t_ms": 4601,
+   "evento": {
+    "evento": "agente",
+    "id": "nome",
+    "estado": "rodando"
+   }
+  },
+  {
+   "t_ms": 4601,
+   "evento": {
+    "evento": "agente",
+    "id": "material",
+    "estado": "rodando"
+   }
+  },
+  {
+   "t_ms": 4601,
+   "evento": {
+    "evento": "agente",
+    "id": "tipo",
+    "estado": "rodando"
+   }
+  },
+  {
+   "t_ms": 4601,
+   "evento": {
+    "evento": "agente",
+    "id": "geometria",
+    "estado": "rodando"
+   }
+  },
+  {
+   "t_ms": 6154,
+   "evento": {
+    "evento": "agente",
+    "id": "numero",
+    "estado": "ok",
+    "ms": 1555,
+    "resumo": "MT-2026-0117 · rev 0",
+    "resultado": {
+     "numero_desenho": "MT-2026-0117",
+     "revisao": "0"
+    }
+   }
+  },
+  {
+   "t_ms": 6268,
+   "evento": {
+    "evento": "agente",
+    "id": "tipo",
+    "estado": "ok",
+    "ms": 1669,
+    "resumo": "Usinagem",
+    "resultado": {
+     "tipo_item": "usinagem",
+     "motivo": "As notas informam \"Peça usinada a partir de barra redonda\" e o desenho mostra eixos torneados com tolerâncias e rugosidade N7."
+    }
+   }
+  },
+  {
+   "t_ms": 6292,
+   "evento": {
+    "evento": "agente",
+    "id": "nome",
+    "estado": "ok",
+    "ms": 1694,
+    "resumo": "EIXO DE TRANSMISSÃO",
+    "resultado": {
+     "nome_peca": "EIXO DE TRANSMISSÃO"
+    }
+   }
+  },
+  {
+   "t_ms": 6412,
+   "evento": {
+    "evento": "agente",
+    "id": "material",
+    "estado": "ok",
+    "ms": 1813,
+    "resumo": "AÇO SAE 1045",
+    "resultado": {
+     "material": "AÇO SAE 1045",
+     "familia": "aco_carbono"
+    }
+   }
+  },
+  {
+   "t_ms": 7265,
+   "evento": {
+    "evento": "agente",
+    "id": "geometria",
+    "estado": "ok",
+    "ms": 2666,
+    "resumo": "3 trechos lidos",
+    "resultado": {
+     "massa_declarada_kg": null,
+     "trechos": [
+      {
+       "cotas_lidas": "Ø40 k6",
+       "forma": "cilindro",
+       "comprimento_mm": 50.0,
+       "diametro_mm": 40.0,
+       "diametro_interno_mm": null,
+       "largura_mm": null,
+       "altura_mm": null
+      },
+      {
+       "cotas_lidas": "Ø60",
+       "forma": "cilindro",
+       "comprimento_mm": 120.0,
+       "diametro_mm": 60.0,
+       "diametro_interno_mm": null,
+       "largura_mm": null,
+       "altura_mm": null
+      },
+      {
+       "cotas_lidas": "Ø50 h7",
+       "forma": "cilindro",
+       "comprimento_mm": 80.0,
+       "diametro_mm": 50.0,
+       "diametro_interno_mm": null,
+       "largura_mm": null,
+       "altura_mm": null
+      }
+     ]
+    }
+   }
+  },
+  {
+   "t_ms": 7265,
+   "evento": {
+    "evento": "agente",
+    "id": "cadastro",
+    "estado": "rodando"
+   }
+  },
+  {
+   "t_ms": 7265,
+   "evento": {
+    "evento": "agente",
+    "id": "cadastro",
+    "estado": "ok",
+    "ms": 0,
+    "resumo": "4,39 kg"
+   }
+  },
+  {
+   "t_ms": 7265,
+   "evento": {
+    "evento": "cadastro",
+    "cadastro": {
+     "numero_desenho": "MT-2026-0117",
+     "revisao": "0",
+     "denominacao": "EIXO DE TRANSMISSÃO",
+     "material": "AÇO SAE 1045",
+     "tipo_item": "usinagem",
+     "tipo_item_rotulo": "Usinagem",
+     "dimensao_principal": "Ø60 × 250 mm",
+     "peso_kg": 4.39,
+     "peso": {
+      "peso_kg": 4.39,
+      "origem": "calculado pela geometria",
+      "volume_cm3": 559.2,
+      "densidade_kg_m3": 7850
+     },
+     "texto_breve": "EIXO TRANSMISSAO;ACO SAE 1045;D60X250MM",
+     "pendencias": [
+      "Conferir peso estimado (sem massa no desenho)"
+     ]
+    }
+   }
+  },
+  {
+   "t_ms": 7265,
+   "evento": {
+    "evento": "fim",
+    "ms": 7260
+   }
+  }
+ ]
+}

@@ -1,7 +1,9 @@
-# Fluxo do Sistema
+# Fluxo do MVP
 
-1. O sistema recebe um desenho ou documento técnico.
-2. O classificador identifica o tipo de entrada.
-3. O fluxo principal chama os agentes responsáveis.
-4. Cada agente extrai uma informação específica.
-5. Os resultados são combinados para formar o cadastro técnico.
+1. A tela envia a imagem do desenho (ou pede o exemplo).
+2. O **classificador** confere se é desenho técnico. Se não for, o fluxo termina como fora do escopo.
+3. O agente de **estrutura** confere se é uma peça única. Conjuntos terminam como fora do escopo.
+4. Cinco agentes rodam em paralelo: **nº do desenho**, **denominação**, **material**, **tipo de item**
+   e **geometria** (cotas dos trechos ou massa declarada).
+5. O **cadastro** é montado em Python: peso, dimensão principal, texto breve e pendências.
+6. O cadastrista revisa as pendências e baixa o JSON.

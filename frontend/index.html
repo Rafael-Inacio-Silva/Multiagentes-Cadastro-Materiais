@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro Técnico · Multiagentes</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23161b22'/%3E%3Cpath d='M8 22h16M10 22V12l6-4 6 4v10' stroke='%237aa2ff' stroke-width='2.4' fill='none' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <aside class="barra">
+    <div class="marca">Cadastro Técnico<span>multiagentes · MVP</span></div>
+    <nav>
+      <button class="item ativo" data-tela="analisar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>
+        Analisar desenho
+      </button>
+      <button class="item" data-tela="agentes">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 7.5l3 8M16 7.5l-3 8M8.5 6h7"/></svg>
+        Como funciona
+      </button>
+    </nav>
+    <div class="rodape-barra">
+      <div class="rot">modelo</div>
+      <div id="modelo" class="modelo">—</div>
+      <span id="modo" class="pilula"><span class="ponto cinza"></span>conectando</span>
+    </div>
+  </aside>
+
+  <div class="corpo">
+    <!-- ANALISAR ------------------------------------------------------- -->
+    <section id="tela-analisar">
+      <header class="topo">
+        <div>
+          <h1>Analisar desenho</h1>
+          <div class="sub" id="sub">desenho técnico de peça única → cadastro do material</div>
+        </div>
+        <span id="situacao" class="pilula"><span class="ponto cinza"></span>aguardando</span>
+      </header>
+
+      <main>
+        <div class="cartao">
+          <h2>Entrada</h2>
+          <div class="linha">
+            <button id="btn-exemplo">Rodar desenho de exemplo</button>
+            <label class="botao calmo" id="rot-arquivo">
+              Enviar meu desenho
+              <input type="file" id="arquivo" accept="image/png,image/jpeg,image/webp" hidden>
+            </label>
+            <span class="fraco" id="dica">PNG, JPG ou WEBP até 8 MB · uma peça por desenho</span>
+          </div>
+        </div>
+
+        <div class="duas">
+          <div class="cartao">
+            <div class="cabeca">
+              <h2>Desenho</h2>
+              <span class="fraco" id="nome-arquivo"></span>
+            </div>
+            <div class="folha" id="folha">
+              <div class="vazio">Rode o exemplo ou envie um desenho técnico.</div>
+            </div>
+          </div>
+
+          <div class="cartao">
+            <div class="cabeca">
+              <h2>Agentes</h2>
+              <span class="fraco" id="tempo"></span>
+            </div>
+            <ol class="agentes" id="agentes"></ol>
+          </div>
+        </div>
+
+        <div class="cartao" id="cartao-cadastro" hidden>
+          <div class="cabeca">
+            <h2>Cadastro do material</h2>
+            <div class="linha">
+              <button class="calmo" id="btn-copiar">Copiar texto breve</button>
+              <button class="calmo" id="btn-json">Baixar JSON</button>
+            </div>
+          </div>
+          <div class="numeros" id="numeros"></div>
+          <div class="texto-breve">
+            <div class="rot">Texto breve <span id="tb-tamanho"></span></div>
+            <code id="texto-breve"></code>
+          </div>
+          <div id="pendencias"></div>
+        </div>
+
+        <div class="trava" id="fora" hidden></div>
+      </main>
+    </section>
+
+    <!-- COMO FUNCIONA -------------------------------------------------- -->
+    <section id="tela-agentes" hidden>
+      <header class="topo">
+        <div>
+          <h1>Como funciona</h1>
+          <div class="sub">um agente de IA por atributo, um orquestrador e uma etapa sem IA</div>
+        </div>
+      </header>
+      <main>
+        <div class="cartao">
+          <h2>O caminho do MVP</h2>
+          <div class="fluxo">
+            <span class="no">Desenho</span><i>→</i>
+            <span class="no ia">Classificador</span><i>→</i>
+            <span class="no ia">Estrutura</span><i>→</i>
+            <span class="no ia grupo">5 agentes em paralelo<small>nº · denominação · material · tipo · geometria</small></span><i>→</i>
+            <span class="no">Cadastro<small>sem IA</small></span>
+          </div>
+          <p class="fraco">O MVP tem um só caminho: desenho técnico de <b>uma peça</b>. Catálogos e conjuntos
+            são reconhecidos pelos dois primeiros agentes e devolvidos como fora do escopo.</p>
+        </div>
+        <div class="numeros">
+          <div class="numero"><div class="rot">A IA lê</div><div class="texto">Cada agente recebe a imagem e uma instrução curta e devolve JSON validado por Pydantic (Structured Outputs). Campo ilegível vira <code>null</code>, nunca chute.</div></div>
+          <div class="numero"><div class="rot">O código calcula</div><div class="texto">O agente de geometria só transcreve as cotas. Volume × densidade é feito em Python: aritmética não é tarefa para o modelo.</div></div>
+          <div class="numero"><div class="rot">O cadastrista decide</div><div class="texto">O resultado vem com texto breve padronizado (40 caracteres) e uma lista de pendências para revisar antes de criar o material.</div></div>
+        </div>
+      </main>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
